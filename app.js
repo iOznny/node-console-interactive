@@ -1,5 +1,7 @@
 require('colors');
-const { showMenu, pause } = require('./helpers/messages');
+
+//const { showMenu, pause } = require('./helpers/messages');
+const { inquirerMenu } = require('./helpers/inquirer');
 
 console.clear();
 
@@ -8,13 +10,9 @@ const main = async() => {
 
     // Repetición del menu de opciones.
     do {        
-        opt = await showMenu();
-        console.log({ opt  });
-
-        if (opt !== '0') {
-            await pause();
-        }
-
+        opt = await inquirerMenu();
+        console.log({ opt });
+        
     } while (opt !== '0');
 
 }
