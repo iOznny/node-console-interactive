@@ -1,0 +1,23 @@
+{
+  "name": "node-console-interactive",
+  "version": "0.0.1",
+  "description": "Aplicación interactiva por Console",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iOznny/node-console-interactive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iOznny/node-console-interactive/issues"
+  },
+  "homepage": "https://github.com/iOznny/node-console-interactive#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
