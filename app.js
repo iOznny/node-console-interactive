@@ -1,11 +1,17 @@
 require('colors');
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
-const { saveDB } = require('./helpers/saveFile');
+const { saveDB, readDB } = require('./helpers/saveFile');
 const Activities = require('./models/activities');
 
 const main = async() => {
     let opt = '';
     const activities = new Activities();
+    const activitiesDB = readDB();
+
+    // Load activities
+    if (activitiesDB) {
+        activities.loadActivities(activitiesDB);
+    }
 
     // Repetición del menu de opciones.
     do {        
@@ -26,7 +32,7 @@ const main = async() => {
         }
         
         // Guardar actividades.
-        //saveDB(activities.listArr);
+        saveDB(activities.listArr);
 
         await pause();    
 

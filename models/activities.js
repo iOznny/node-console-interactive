@@ -29,6 +29,13 @@ class Activities {
         this._list[activity.id] = activity;
     }
 
+    // Load Activities.
+    loadActivities(activities = []) {
+        activities.forEach(a => {
+            this._list[a.id] = a;
+        });
+    }
+
 }
 
 module.exports = Activities;
