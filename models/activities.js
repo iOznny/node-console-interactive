@@ -36,6 +36,40 @@ class Activities {
         });
     }
 
+    // List Completed.
+    listCompleted() {
+        console.log();
+        this.listArr.forEach((a, i) => {
+            const idx = `${ i + 1 }`.green;
+            const { desc, completedIn } = a;
+            const status = (completedIn) ? 'Completada'.green : 'Pendiente'.red;
+            console.log(`${ idx } ${ desc } :: ${ status }`);
+        });
+    }
+
+    // List Activities Status (Completed / Pending)
+    listActivitiesStatus(completed = true) {
+        let idx = 0;
+
+        console.log();
+        this.listArr.forEach(a => {            
+            const { desc, completedIn } = a;
+            const status = (completedIn) ? 'Completada'.green : 'Pendiente'.red;
+
+            if (completed) {
+                if (completedIn) {
+                    idx += 1;
+                    console.log(`${ (idx + '.').green } ${ desc } :: ${ status }`); 
+                }
+            } else {
+                if (!completedIn) {
+                    idx += 1;
+                    console.log(`${ (idx + '.').red } ${ desc } :: ${ status }`); 
+                }
+            }
+        });
+    }
+
 }
 
 module.exports = Activities;
