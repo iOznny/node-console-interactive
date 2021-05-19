@@ -1,5 +1,5 @@
 require('colors');
-const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { inquirerMenu, pause, readInput, listDeleteActivity, confirmDelete, listCheckingActivity } = require('./helpers/inquirer');
 const { saveDB, readDB } = require('./helpers/saveFile');
 const Activities = require('./models/activities');
 
@@ -36,6 +36,25 @@ const main = async() => {
 
             case '4':
                 activities.listActivitiesStatus(false);
+            break;
+
+            case '5':
+                const ids = await listCheckingActivity(activities.listArr);
+                console.log(ids);
+            break;
+
+            case '6':
+                const id = await listDeleteActivity(activities.listArr);
+                if (id !== '0') {
+                    const deleteStatus = await confirmDelete('¿Está seguro?');
+
+                    // Confirmación
+                    if (deleteStatus) {
+                        activities.deleteActivity(id);
+                        console.log(`Tarea borrada exitosamente.`.yellow);
+                    }                
+                }
+
             break;
         }
         

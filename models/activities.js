@@ -70,6 +70,13 @@ class Activities {
         });
     }
 
+    // Delete Activity
+    deleteActivity(id = '') {
+        if (this._list[id]) {
+            delete this._list[id];
+        }
+    }
+
 }
 
 module.exports = Activities;
