@@ -80,8 +80,78 @@ const readInput = async(message) => {
     return desc;
 }
 
+const listDeleteActivity = async(activities = []) => {
+    
+    const choices = activities.map((a, i) => {
+        let idx = `${i + 1}.`.green;
+
+        return {
+            value: a.id,
+            name: `${idx} ${ a.desc }`
+        }
+    });
+
+    choices.unshift({
+        value: '0',
+        name: '0.'.green + 'Cancelar'
+    });
+
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices
+        }
+    ];
+
+    const { id } = await inquirer.prompt(questions);
+    return id;
+};
+
+const confirmDelete = async(message) => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+
+    const { ok } = await inquirer.prompt(question);
+    return ok;
+}
+
+const listCheckingActivity = async(activities = []) => {
+    
+    const choices = activities.map((a, i) => {
+        let idx = `${i + 1}.`.green;
+
+        return {
+            value: a.id,
+            name: `${ idx } ${ a.desc }`,
+            checked: true
+        }
+    });
+
+    const question = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Selecciones',
+            choices
+        }
+    ];
+
+    const { ids } = await inquirer.prompt(question);
+    return ids;
+};
+
 module.exports = {
     inquirerMenu,
     pause,
-    readInput    
+    readInput,
+    listDeleteActivity,
+    confirmDelete,
+    listCheckingActivity
 }
