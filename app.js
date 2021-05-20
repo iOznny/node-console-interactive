@@ -40,7 +40,7 @@ const main = async() => {
 
             case '5':
                 const ids = await listCheckingActivity(activities.listArr);
-                console.log(ids);
+                activities.updateActivities(ids);
             break;
 
             case '6':

@@ -54,12 +54,14 @@ const pause = async() => {
         {
             type: 'input',
             name: 'enter',
-            message: `\nPresione ${ 'ENTER'.green } para continuar\n`
+            message: `Presione ${ 'ENTER'.green } para continuar\n`
         }
     ];
 
+    console.log('\n');
     await inquirer.prompt(question);
 }
+
 const readInput = async(message) => {
     const question = [
         {
@@ -130,7 +132,7 @@ const listCheckingActivity = async(activities = []) => {
         return {
             value: a.id,
             name: `${ idx } ${ a.desc }`,
-            checked: true
+            checked: (a.completedIn) ? true : false
         }
     });
 

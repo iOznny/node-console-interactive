@@ -39,6 +39,7 @@ class Activities {
     // List Completed.
     listCompleted() {
         console.log();
+        
         this.listArr.forEach((a, i) => {
             const idx = `${ i + 1 }`.green;
             const { desc, completedIn } = a;
@@ -59,7 +60,7 @@ class Activities {
             if (completed) {
                 if (completedIn) {
                     idx += 1;
-                    console.log(`${ (idx + '.').green } ${ desc } :: ${ status }`); 
+                    console.log(`${ (idx + '.').green } ${ desc } :: ${ completedIn.green }`); 
                 }
             } else {
                 if (!completedIn) {
@@ -75,6 +76,23 @@ class Activities {
         if (this._list[id]) {
             delete this._list[id];
         }
+    }
+
+    // Update Activities Status
+    updateActivities(ids = []) { 
+        ids.forEach(id => {
+            const activity = this._list[id];
+
+            if (!activity.completedIn) {
+                activity.completedIn = new Date().toISOString();
+            }
+        });
+
+        this.listArr.forEach(a => {
+            if (!ids.includes(a.id)) {
+                this._list[a.id].completedIn = null;
+            }
+        });
     }
 
 }
