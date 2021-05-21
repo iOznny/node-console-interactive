@@ -83,7 +83,6 @@ const readInput = async(message) => {
 }
 
 const listDeleteActivity = async(activities = []) => {
-    
     const choices = activities.map((a, i) => {
         let idx = `${i + 1}.`.green;
 
@@ -125,7 +124,6 @@ const confirmDelete = async(message) => {
 }
 
 const listCheckingActivity = async(activities = []) => {
-    
     const choices = activities.map((a, i) => {
         let idx = `${i + 1}.`.green;
 
